@@ -5,19 +5,21 @@ const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET)
 const port = process.env.PORT || 3000
 
 slackEvents.on('file_shared', (event) => {
-  if (Object.prototype.hasOwnProperty.call(event, 'file')) {
-    web.files.info({file: event.file.id}, null, (err, response) => {
-      const file = response.file;
-      if (file.mimetype.includes("image") && file.alt_text == file.name || file.alt_text == "") {
-        (async () => {
-          await web.chat.postEphemeral({
-            channel: event.channel,
-            user: event.user,
-            text: 'It looks like your image is missing alt text. Please consider adding alt text to your image so that it is accessible to blind and low-vision teammates ❤️',
+  console.log(event);
+  if (event.hasOwnProperty('file')) {
+    (async () => {
+      const data = await getFile(event.file.id);
+      if (data.hasOwnProperty('file')) {
+        const file = data.file;
+        if (file.mimetype.includes('image') && file.alt_text === undefined) {
+          web.chat.postEphemeral({
+            channel: event.channel_id,
+            user: event.user_id,
+            text: 'Remember to add alt text to your image so that it is accessible to your blind and low-vision teammates ❤️. You can add alt text on the image you posted by activating the `More actions` menu and selecting `Edit file details`.'
           });
-        })();
+        }
       }
-    });
+    })()
   }
 });
 
@@ -26,3 +28,8 @@ slackEvents.on('error', console.error);
 slackEvents.start(port).then(() => {
   console.log(`server listening on port ${port}`);
 });
+
+async function getFile(file_id) {
+  let response = await web.files.info({ file: file_id });
+  return response;
+}
