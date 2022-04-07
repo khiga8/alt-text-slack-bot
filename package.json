@@ -1,16 +1,27 @@
 {
   "name": "alt-text-slack-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Slack integration that encourages accessible image sharing in a Slack workspace",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "dist": "npm run clean && mkdir dist && tsc",
+    "test": "jest"
   },
+  "prettier": "@github/prettier-config",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "@khiga8",
+  "license": "MIT",
   "dependencies": {
     "@slack/events-api": "^3.0.1",
     "@slack/web-api": "^6.7.1"
+  },
+  "devDependencies": {
+    "@github/prettier-config": "0.0.4",
+    "eslint": "^8.12.0",
+    "eslint-plugin-github": "^4.3.6",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
   }
 }

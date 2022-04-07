@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+     "target": "es6",
+     "module": "commonjs",
+     "sourceMap": true,
+     "outDir": "dist",
+     "rootDir": "./src",                             
+ },
+ "exclude": ["./node_modules", "./jest.config.ts", "src/*.test.ts"]
+}
