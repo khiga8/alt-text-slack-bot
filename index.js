@@ -14,12 +14,15 @@ slackEvents.on('message', (event) => {
       }
     });
     if (filenames_missing_alt_text.length > 0) {
-      web.chat.postEphemeral({
+      const api_parameters = {
         channel: event.channel,
         user: event.user,
-        thread_ts: event.ts,
         text: responseText(filenames_missing_alt_text)
-      });
+      };
+      if (event.hasOwnProperty('thread_ts')) {
+        api_parameters.thread_ts = event.thread_ts;
+      }
+      web.chat.postEphemeral(api_parameters);
     }
   }
 });
@@ -31,9 +34,9 @@ slackEvents.start(port).then(() => {
 });
 
 function responseText(filenames_missing_alt_text) {
-  if (filenames_missing_alt_text == 1) {
-    return 'Uh oh! The image you shared is missing alt text so your teammates who are blind or low-vision won\'t be able to access it. Simply activate the `More actions` menu on the image and select `Edit file details` to add alt text. ❤️'
+  if (filenames_missing_alt_text.length === 1) {
+    return 'Uh oh! The image you shared is missing alt text so your teammates who may be blind or low-vision won\'t be able to access it. \n\nSimply activate the *More actions* menu on the image, choose *Edit file details*, and modify the *Description* field to add alt text. ❤️'
   } else {
-    return `Uh oh! The following images you shared are missing alt text: ${filenames_missing_alt_text.join(', ')}.\n Simply activate the \`More actions\` menu and select \`Edit file details\` to add an alt text for each image to ensure your image is accessible to teammates who are blind or low-vision ❤️`
+    return `Uh oh! The following images you shared are missing alt text: ${filenames_missing_alt_text.join(', ')}.\n For each image, simply activate the *More actions* menu, choose *Edit file details*, and modify the *Description* to add an alt text to ensure it is accessible to your teammates who may be blind or low-vision ❤️`
   }
 }
