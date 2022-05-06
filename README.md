@@ -2,6 +2,9 @@
 
 `alt-text-slack-bot` aims to encourage accessible image sharing in a Slack workspace. When configured and added to a workspace, this Slack bot will detect when an image file has been shared in a channel without alternative text. It will send a friendly reminder that can only be seen by the user who posted the image along with instructions on how to add the alternative text.
 
+<img width="500" alt="Screenshot of a message on Slack from a bot that says `Uh oh! The image you shared is missing alt text` along with how to add alt text, in response to an image I sent. The bot message has a note, `Only visible to you`." src="https://user-images.githubusercontent.com/16447748/167228612-b0caa58e-6741-4f93-acd5-51b73a0cfbb7.png">
+
+
 This repo contains the code for the bot setup and should be customized to fit your workspace needs. For a comprehensive guide on the process of setting up a Slack app and installing it in a workspace, check out a fantastic tutorial by `@lukeocodes` at [DEV: Guy's Bot - Inclusive Language in Slack](https://dev.to/lukeocodes/who-s-a-good-bot-a-slack-bot-for-inclusive-language-2fkh).
 
 ## Motivation
