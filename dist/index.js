@@ -15,7 +15,7 @@ slackEvents.on('message', (event) => {
             const parameters = {
                 channel: event.channel,
                 user: event.user,
-                text: (0, utils_1.generateResponseText)(filesnamesMissingAltText)
+                text: (0, utils_1.generateResponseText)(event.files.length, filesnamesMissingAltText)
             };
             if (event.hasOwnProperty('thread_ts')) {
                 parameters.thread_ts = event.thread_ts;

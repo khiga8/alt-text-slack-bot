@@ -18,7 +18,7 @@ slackEvents.on('message', (event) => {
       const parameters: ChatPostEphemeralArguments = {
         channel: event.channel,
         user: event.user,
-        text: generateResponseText(filesnamesMissingAltText)
+        text: generateResponseText(event.files.length, filesnamesMissingAltText)
       }
       if (event.hasOwnProperty('thread_ts')) {
         parameters.thread_ts = event.thread_ts
