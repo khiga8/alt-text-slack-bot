@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "prettier": "@github/prettier-config",
-  "keywords": [],
+  "keywords": ["accessibility", "slack", "slackbot"],
   "author": "@khiga8",
   "license": "MIT",
   "dependencies": {
