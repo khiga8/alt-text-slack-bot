@@ -9,7 +9,7 @@ This repo contains the code for the bot setup and should be customized to fit yo
 
 ## Motivation
 
-The alt text feature in Slack is relatively new and hidden so a lot of people don't know about it or forget to use it. This bot was created to ensure that images are accessible to everyone, including channel members who are blind or have low-vision. This bot eliminates the potential burden of individual members form having to ask for alt text.
+The alt text feature in Slack is relatively new and hidden so a lot of people don't know about it or forget to use it. This bot was created to ensure that images are accessible to everyone, including channel members who are blind or have low-vision. This bot eliminates the potential burden of individual members having to remind people to add alt text.
 
 ## Requirements
 
