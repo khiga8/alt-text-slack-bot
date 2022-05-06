@@ -1,3 +1,5 @@
+
+   
 import { generateResponseText, getImageNamesWithMissingAltText } from "./../src/utils";
 
 describe('utils', () => {
@@ -30,7 +32,7 @@ describe('utils', () => {
       const output = generateResponseText(numberOfFilesInMessage, fileNames)
       expect(output).toEqual(`Uh oh! The image you shared is missing alt text so it won't be accessible to your teammates `+
       `who are blind or have low-vision. \n\nOn Desktop, activate the *More actions* menu on the image, choose *Edit file details*, `+
-      `and modify the *Description* field to add alt text. On Android, long press the image and select **Add description**. If adding ` +
+      `and modify the *Description* field to add alt text. On Android, long press the image and select *Add description*. If adding ` +
       `alt is not supported on your device, simply provide alt text in a follow-up message. ❤️`)
     });
 
@@ -41,7 +43,7 @@ describe('utils', () => {
       expect(output).toEqual(`Uh oh! The following images are missing alt text: \`bad.jpg\`, \`alsobad.jpg\`. `+
       `This means it won't be accessible to your teammates who are blind or have low-vision.\n\n`+
       `On Desktop, activate the *More actions* menu on the image, choose *Edit file details*, and modify the *Description* field to add alt text. `+
-      `On Android, long press the image and select **Add description**. If adding alt is not supported on your device, simply provide alt text in a follow-up message. ❤️`)
+      `On Android, long press the image and select *Add description*. If adding alt is not supported on your device, simply provide alt text in a follow-up message. ❤️`)
     });
   })
 });
